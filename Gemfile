@@ -27,8 +27,10 @@ gem 'tzinfo-data', platforms: %i[mingw x64_mingw mswin jruby]
 gem 'webpacker'
 
 group :development do
+  gem 'debase'
   gem 'listen'
   gem 'rack-mini-profiler', require: false
+  gem 'ruby-debug-ide'
   gem 'spring'
   gem 'web-console'
 end
@@ -39,6 +41,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'rspec-rails'
   gem 'turnip', '~> 4.0.0'
 end
 
