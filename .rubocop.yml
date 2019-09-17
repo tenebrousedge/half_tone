@@ -1,0 +1,53 @@
+AllCops:
+  TargetRubyVersion: 2.6.4
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+
+Layout/AlignArguments:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/ClassStructure:
+  Enabled: true
+
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+Layout/IndentFirstHashElement:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*gemspec'
+    - 'spec/**/*.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Metrics/MethodLength:
+  Max: 10 # default, for now
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/AutoResourceCleanup:
+  Enabled: true
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/DocumentationMethod:
+  Enabled: true # I'm going to hate this
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/OptionHash:
+  Enabled: true
