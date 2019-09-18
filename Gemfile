@@ -12,9 +12,9 @@ ruby '2.6.4'
 gem 'autoprefixer-rails'
 
 gem 'bootsnap', require: false
-gem 'fae-rails'
+gem 'comfortable_mexican_sofa', '~> 2.0.0'
 gem 'honeybadger'
-gem 'pg'
+gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma'
 gem 'rack-canonical-host'
 gem 'rails', '~> 6.0.0'
