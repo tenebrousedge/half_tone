@@ -20,6 +20,7 @@ gem 'rack-canonical-host'
 gem 'rails', '~> 6.0.0'
 gem 'recipient_interceptor'
 gem 'sassc-rails'
+gem 'sidekiq'
 gem 'skylight'
 gem 'sprockets', '>= 3.0.0'
 gem 'title'
@@ -54,3 +55,8 @@ group :test do
 end
 
 gem 'suspenders', group: %i[development test]
+
+# workaround from https://github.com/protocolbuffers/protobuf/issues/4460
+gem 'grpc', '1.21.0', platforms: ['ruby']
+gem 'google-protobuf', '3.7.0', platforms: ['ruby']
+

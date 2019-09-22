@@ -31,5 +31,9 @@ module HalfTone
     config.load_defaults 6.0
     config.autoloader = :classic
     config.generators.system_tests = nil
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.active_job.queue_adapter = :sidekiq
   end
 end
