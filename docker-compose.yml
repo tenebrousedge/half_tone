@@ -7,10 +7,6 @@ services:
       - './data/postgres:/var/lib/postgresql/data'
     env_file:
       - '.env'
-    # environment:
-    #   - "POSTGRES_USER=half_tone"
-    #   - "POSTGRES_PASSWORD=half_pass"
-    #   - "POSTGRES_DB=${POSTGRES_DB}"
     ports:
       - 5432:5432
 

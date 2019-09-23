@@ -8,7 +8,8 @@ RUN apk add --update \
   postgresql-dev \
   nodejs \
   npm \
-  tzdata
+  tzdata \
+  git
 
 COPY Gemfile Gemfile.lock ./
 
@@ -20,7 +21,7 @@ RUN CFLAGS="-Wno-cast-function-type" \
 RUN npm install -g yarn
 RUN yarn --pure-lockfile
 
-RUN apk del build-base
+RUN apk del build-base git
 
 COPY . .
 
