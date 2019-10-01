@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   postgres:
@@ -16,11 +16,16 @@ services:
     volumes:
       - 'redis:/data'
 
-  website:
+  web:
     depends_on:
       - 'postgres'
       - 'redis'
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        USER_ID: "${UID? no UID}"
+        GROUP_ID: "${GID? no GID}"
     ports:
       - '3000:3000'
     volumes:
@@ -32,7 +37,12 @@ services:
     depends_on:
       - 'postgres'
       - 'redis'
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        USER_ID: "${UID? no UID}"
+        GROUP_ID: "${GID? no GID}"
     command: bundle exec sidekiq
     volumes:
       - '.:/app'
@@ -42,7 +52,12 @@ services:
   cable:
     depends_on:
       - 'redis'
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        USER_ID: "${UID? no UID}"
+        GROUP_ID: "${GID? no GID}"
     command: puma -p 28080 cable/config.ru
     ports:
       - '28080:28080'
