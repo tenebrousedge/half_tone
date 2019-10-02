@@ -3,6 +3,7 @@ FROM ruby:2.6-alpine
 ARG USER_ID=1000
 ARG GROUP_ID=1000
 
+RUN sed -i "s/999/499/" /etc/group
 RUN addgroup -g $GROUP_ID half_tone &&\
   adduser -D -g '' -u $USER_ID -G half_tone half_tone
 

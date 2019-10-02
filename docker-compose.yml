@@ -10,6 +10,17 @@ services:
     ports:
       - 5432:5432
 
+  mongo:
+    image: mongo
+    ports:
+    - "27017:27017"
+    volumes:
+    - data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DB}
+
   redis:
     image: 'redis:4.0-alpine'
     command: "redis-server --requirepass ${REDIS_PASSWORD}"
@@ -18,7 +29,7 @@ services:
 
   web:
     depends_on:
-      - 'postgres'
+      - 'mongo'
       - 'redis'
     build:
       context: .
@@ -28,6 +39,7 @@ services:
         GROUP_ID: "${GID? no GID}"
     ports:
       - '3000:3000'
+    user: "${UID}:${GID}"
     volumes:
       - '.:/app'
     env_file:
@@ -44,6 +56,7 @@ services:
         USER_ID: "${UID? no UID}"
         GROUP_ID: "${GID? no GID}"
     command: bundle exec sidekiq
+    user: "${UID}:${GID}"
     volumes:
       - '.:/app'
     env_file:
@@ -61,11 +74,13 @@ services:
     command: puma -p 28080 cable/config.ru
     ports:
       - '28080:28080'
+    user: "${UID}:${GID}"
     volumes:
       - '.:/app'
     env_file:
       - '.env'
 
 volumes:
+  mongo:
   redis:
   postgres:
