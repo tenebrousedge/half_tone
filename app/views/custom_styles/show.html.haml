@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @custom_style.text
+
+= link_to 'Edit', edit_custom_style_path(@custom_style)
+\|
+= link_to 'Back', custom_styles_path

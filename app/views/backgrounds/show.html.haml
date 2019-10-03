@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @background.url
+%p
+  %b Comic:
+  = @background.comic
+
+= link_to 'Edit', edit_background_path(@background)
+\|
+= link_to 'Back', backgrounds_path

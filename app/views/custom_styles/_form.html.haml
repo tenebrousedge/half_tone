@@ -1,0 +1,13 @@
+= form_for @custom_style do |f|
+  - if @custom_style.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@custom_style.errors.count, "error")} prohibited this custom_style from being saved:"
+      %ul
+        - @custom_style.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :text
+    = f.text_area :text
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,21 @@
+%h1 Listing custom_styles
+
+%table
+  %thead
+    %tr
+      %th Text
+      %th
+      %th
+      %th
+
+  %tbody
+    - @custom_styles.each do |custom_style|
+      %tr
+        %td= custom_style.text
+        %td= link_to 'Show', custom_style
+        %td= link_to 'Edit', edit_custom_style_path(custom_style)
+        %td= link_to 'Destroy', custom_style, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Custom style', new_custom_style_path

@@ -1,0 +1,23 @@
+%h1 Listing backgrounds
+
+%table
+  %thead
+    %tr
+      %th Url
+      %th Comic
+      %th
+      %th
+      %th
+
+  %tbody
+    - @backgrounds.each do |background|
+      %tr
+        %td= background.url
+        %td= background.comic
+        %td= link_to 'Show', background
+        %td= link_to 'Edit', edit_background_path(background)
+        %td= link_to 'Destroy', background, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Background', new_background_path

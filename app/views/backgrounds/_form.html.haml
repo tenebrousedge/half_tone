@@ -1,0 +1,16 @@
+= form_for @background do |f|
+  - if @background.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@background.errors.count, "error")} prohibited this background from being saved:"
+      %ul
+        - @background.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :comic
+    = f.text_field :comic
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @comic.title
+%p
+  %b Subtitle:
+  = @comic.subtitle
+%p
+  %b Published at:
+  = @comic.published_at
+%p
+  %b Author:
+  = @comic.author
+
+= link_to 'Edit', edit_comic_path(@comic)
+\|
+= link_to 'Back', comics_path

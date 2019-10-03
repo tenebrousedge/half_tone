@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @book.title
+%p
+  %b Subtitle:
+  = @book.subtitle
+%p
+  %b Sort:
+  = @book.sort
+%p
+  %b Timestamps:
+  = @book.timestamps
+%p
+  %b Pubished at:
+  = @book.pubished_at
+%p
+  %b Comic:
+  = @book.comic
+%p
+  %b Chapter:
+  = @book.chapter
+
+= link_to 'Edit', edit_book_path(@book)
+\|
+= link_to 'Back', books_path
