@@ -3,6 +3,8 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
+    - '**/*.erb'
+    - '**/*.haml'
 
 Layout/AlignArguments:
   EnforcedStyle: with_fixed_indentation

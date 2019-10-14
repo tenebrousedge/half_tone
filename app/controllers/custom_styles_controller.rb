@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class CustomStylesController < ApplicationController
-  before_action :set_custom_style, only: [:show, :edit, :update, :destroy]
+  before_action :set_custom_style, only: %i[show edit update destroy]
 
   # GET /custom_styles
   def index
@@ -7,8 +9,7 @@ class CustomStylesController < ApplicationController
   end
 
   # GET /custom_styles/1
-  def show
-  end
+  def show; end
 
   # GET /custom_styles/new
   def new
@@ -16,8 +17,7 @@ class CustomStylesController < ApplicationController
   end
 
   # GET /custom_styles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /custom_styles
   def create
@@ -46,13 +46,14 @@ class CustomStylesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_custom_style
-      @custom_style = CustomStyle.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def custom_style_params
-      params.require(:custom_style).permit(:text)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_custom_style
+    @custom_style = CustomStyle.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def custom_style_params
+    params.require(:custom_style).permit(:text)
+  end
 end

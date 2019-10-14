@@ -2,17 +2,17 @@
 
 # main user class
 class Author
-  #include ::Authority::UserAbilities
+  # include ::Authority::UserAbilities
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable
+    :recoverable, :rememberable, :validatable,
+    :omniauthable
 
   ## Database authenticatable
-  field :email,              type: String, default: ""
-  field :encrypted_password, type: String, default: ""
+  field :email,              type: String, default: ''
+  field :encrypted_password, type: String, default: ''
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -42,5 +42,5 @@ class Author
   field :email, type: String
   field :password, type: String
 
-  #self.authorizer_name = 'AuthorAuthorizer'
+  # self.authorizer_name = 'AuthorAuthorizer'
 end

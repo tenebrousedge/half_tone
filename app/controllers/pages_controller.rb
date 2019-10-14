@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: %i[show edit update destroy]
 
   # GET /pages
   def index
@@ -7,8 +9,7 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1
-  def show
-  end
+  def show; end
 
   # GET /pages/new
   def new
@@ -16,8 +17,7 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /pages
   def create
@@ -46,13 +46,14 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def page_params
-      params.require(:page).permit(:url, :comic_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_page
+    @page = Page.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def page_params
+    params.require(:page).permit(:url, :comic_id)
+  end
 end

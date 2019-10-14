@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BackgroundsController < ApplicationController
-  before_action :set_background, only: [:show, :edit, :update, :destroy]
+  before_action :set_background, only: %i[show edit update destroy]
 
   # GET /backgrounds
   def index
@@ -7,8 +9,7 @@ class BackgroundsController < ApplicationController
   end
 
   # GET /backgrounds/1
-  def show
-  end
+  def show; end
 
   # GET /backgrounds/new
   def new
@@ -16,8 +17,7 @@ class BackgroundsController < ApplicationController
   end
 
   # GET /backgrounds/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /backgrounds
   def create
@@ -46,13 +46,14 @@ class BackgroundsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_background
-      @background = Background.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def background_params
-      params.require(:background).permit(:url, :comic_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_background
+    @background = Background.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def background_params
+    params.require(:background).permit(:url, :comic_id)
+  end
 end

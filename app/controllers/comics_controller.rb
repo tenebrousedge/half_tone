@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ComicsController < ApplicationController
-  before_action :set_comic, only: [:show, :edit, :update, :destroy]
+  before_action :set_comic, only: %i[show edit update destroy]
 
   # GET /comics
   def index
@@ -7,8 +9,7 @@ class ComicsController < ApplicationController
   end
 
   # GET /comics/1
-  def show
-  end
+  def show; end
 
   # GET /comics/new
   def new
@@ -16,8 +17,7 @@ class ComicsController < ApplicationController
   end
 
   # GET /comics/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /comics
   def create
@@ -46,13 +46,14 @@ class ComicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comic
-      @comic = Comic.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def comic_params
-      params.require(:comic).permit(:title, :subtitle, :published_at, :author_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comic
+    @comic = Comic.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def comic_params
+    params.require(:comic).permit(:title, :subtitle, :published_at, :author_id)
+  end
 end

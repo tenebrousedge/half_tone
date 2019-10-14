@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CustomStyle
   include Mongoid::Document
   include Mongoid::Timestamps
