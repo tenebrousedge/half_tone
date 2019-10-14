@@ -94,3 +94,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+require "aws-sdk"
+Aws.config[:s3] = {stub_responses: true}

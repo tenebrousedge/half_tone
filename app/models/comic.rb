@@ -3,7 +3,6 @@ class Comic
   include Mongoid::Timestamps
   field :title, type: String
   field :subtitle, type: String
-  field :published_at, type: Timestamp
   embedded_in :author
   embeds_many :pages, as: :paged
   embeds_many :books, as: :booked

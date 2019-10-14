@@ -1,14 +1,9 @@
-# frozen_string_literal: true
-
-# main user class
-class Author
-  #include ::Authority::UserAbilities
+class Admin
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable
+        :recoverable, :rememberable, :validatable
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -38,9 +33,4 @@ class Author
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
-  field :username, type: String
-  field :email, type: String
-  field :password, type: String
-
-  #self.authorizer_name = 'AuthorAuthorizer'
 end
