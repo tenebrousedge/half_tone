@@ -27,4 +27,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.asset_host = 'http://localhost:3000'
+  if File.read('/proc/1/cgroup').include?('docker')
+    host_ip = `/sbin/ip route | awk '/default/ { print $3 }'`.strip
+
+    BetterErrors::Middleware.allow_ip!(host_ip) if defined?(BetterErrors::Middleware)
+    config.web_console.permissions = [host_ip]
+  end
 end
