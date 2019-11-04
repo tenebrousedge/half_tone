@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'authors/omniauth_callbacks'
   }
 
-  scope :author_admin do
+  devise_scope :author_admin do
     resources :books
     resources :chapters
     resources :custom_styles

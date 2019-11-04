@@ -5,6 +5,23 @@ GIT
   specs:
     acts_as_approvable (0.7.0)
 
+GIT
+  remote: https://github.com/sferik/rails_admin.git
+  revision: a6296d0746e3c8ebec02952b151adb63b5bac83f
+  specs:
+    rails_admin (2.0.0)
+      activemodel-serializers-xml (>= 1.0)
+      builder (~> 3.1)
+      haml (>= 4.0, < 6)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (>= 5.0, < 7)
+      kaminari (>= 0.14, < 2.0)
+      nested_form (~> 0.3)
+      rack-pjax (>= 0.7)
+      rails (>= 5.0, < 7)
+      remotipart (~> 1.3)
+      sassc-rails (>= 1.3, < 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -857,12 +874,18 @@ GEM
     aws-sigv2 (1.0.1)
     aws-sigv4 (1.1.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.13)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
     bindex (0.8.1)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     bitters (1.8.0)
       bourbon (~> 5.0)
       sass (~> 3.4)
@@ -900,6 +923,13 @@ GEM
       mongoid-grid_fs (>= 1.3, < 3.0)
     climate_control (0.2.0)
     coderay (1.1.2)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     comfortable_mexican_sofa (2.0.18)
       active_link_to (>= 1.0.0)
       comfy_bootstrap_form (>= 4.0.0)
@@ -924,6 +954,7 @@ GEM
     debase (0.2.4.1)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.6)
+    debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -936,6 +967,8 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
+    dropzonejs-rails (0.7.4)
+      rails (> 3.1)
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -944,6 +977,8 @@ GEM
     faker (2.6.0)
       i18n (>= 1.6, < 1.8)
     ffi (1.11.1)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     formulaic (0.4.1)
       activesupport
       capybara
@@ -1001,6 +1036,9 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    kaminari-mongoid (1.0.1)
+      kaminari-core (~> 1.0)
+      mongoid
     kramdown (2.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -1110,19 +1148,11 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_admin (2.0.0)
-      activemodel-serializers-xml (>= 1.0)
-      builder (~> 3.1)
-      haml (>= 4.0, < 6)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (>= 5.0, < 7)
-      kaminari (>= 0.14, < 2.0)
-      nested_form (~> 0.3)
-      rack-pjax (>= 0.7)
-      rails (>= 5.0, < 7)
-      remotipart (~> 1.3)
-      sassc-rails (>= 1.3, < 3)
     rails_admin-i18n (1.11.5)
+    rails_admin_multiple_file_upload (0.5.1)
+      dropzonejs-rails (~> 0.7.3)
+      rails (>= 5.0)
+      rails_admin (>= 1.0.0.rc)
     railties (6.0.0)
       actionpack (= 6.0.0)
       activesupport (= 6.0.0)
@@ -1133,6 +1163,12 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    react-rails (2.6.0)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     recipient_interceptor (0.2.0)
       mail
     redis (4.1.3)
@@ -1254,9 +1290,11 @@ DEPENDENCIES
   awesome_print
   aws-sdk (~> 3)
   better_errors
+  binding_of_caller
   bootsnap
   bundler-audit (>= 0.5.0)
   carrierwave-mongoid
+  coffee-rails
   comfortable_mexican_sofa (~> 2.0.0)
   database_cleaner
   debase
@@ -1264,11 +1302,13 @@ DEPENDENCIES
   dotenv-rails
   factory_bot
   faker
+  font-awesome-rails
   formulaic
   google-protobuf (~> 3.7)
   grpc (= 1.21.0)
   haml
   honeybadger
+  kaminari-mongoid
   launchy
   listen
   mini_magick
@@ -1285,8 +1325,10 @@ DEPENDENCIES
   rack-canonical-host
   rack-mini-profiler
   rails (~> 6.0.0)
-  rails_admin
+  rails_admin!
   rails_admin-i18n
+  rails_admin_multiple_file_upload
+  react-rails
   recipient_interceptor
   rspec-rails
   ruby-debug-ide

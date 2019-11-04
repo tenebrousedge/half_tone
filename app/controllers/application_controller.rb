@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
     @current_comic ||= Comic.find_by(subdomain: request.subdomain)
   end
   helper_method :current_comic
+  def pundit_user
+    current_author
+  end
 end

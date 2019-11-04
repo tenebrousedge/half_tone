@@ -4,3 +4,4 @@
 log/*
 tmp/*
 data/*
+mongo_entrypoint/*

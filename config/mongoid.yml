@@ -159,6 +159,7 @@ test:
       hosts:
         - mongo:27017
       options:
+        auth_source: admin
         read:
           mode: :primary
         max_pool_size: 1

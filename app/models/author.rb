@@ -5,10 +5,10 @@ class Author
   # include ::Authority::UserAbilities
   include Mongoid::Document
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, and :trackable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable,
-    :omniauthable
+    :omniauthable, :confirmable
 
   ## Database authenticatable
   field :email,              type: String, default: ''
@@ -29,10 +29,10 @@ class Author
   # field :last_sign_in_ip,    type: String
 
   ## Confirmable
-  # field :confirmation_token,   type: String
-  # field :confirmed_at,         type: Time
-  # field :confirmation_sent_at, type: Time
-  # field :unconfirmed_email,    type: String # Only if using reconfirmable
+  field :confirmation_token,   type: String
+  field :confirmed_at,         type: Time
+  field :confirmation_sent_at, type: Time
+  field :unconfirmed_email,    type: String # Only if using reconfirmable
 
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
@@ -43,4 +43,11 @@ class Author
   field :password, type: String
 
   # self.authorizer_name = 'AuthorAuthorizer'
+  # Aliases for https://github.com/plataformatec/devise/issues/4542
+  alias will_save_change_to_email? email_changed?
+  alias email_in_database email_was
+  # alias email_before_last_save email_before_destroy_was
+
+  embeds_many :comic
+  accepts_nested_attributes_for :comic, allow_destroy: true
 end

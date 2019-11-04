@@ -29,7 +29,7 @@ module HalfTone
     end
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.load_defaults 6.0
-    config.autoloader = :classic
+    # config.autoloader = :classic
     config.generators.system_tests = nil
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

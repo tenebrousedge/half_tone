@@ -9,15 +9,15 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
-    false
+    true
   end
 
   def create?
-    false
+    @user.present?
   end
 
   def new?
@@ -25,7 +25,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    create?
   end
 
   def edit?
@@ -34,6 +34,14 @@ class ApplicationPolicy
 
   def destroy?
     false
+  end
+
+  def dashboard?
+    @user.present?
+  end
+
+  def export?
+    dashboard?
   end
 
   class Scope
