@@ -8,7 +8,7 @@ module Ownable
     validates_associated :owner
     # s = self.class
     # Author.class_eval do
-    #   embeds_many s.to_s.downcase.to_sym
+    #   has_many s.to_s.downcase.to_sym
     # end
   end
 

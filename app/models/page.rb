@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
+# Page class
 class Page
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Publishable
-  include Mongoid::Paperclip
-  field :url, type: String
-  embedded_in :pageable, polymorphic: true
-  has_mongoid_attached_file :image
+  publishable
+  belongs_to :pageable, polymorphic: true
+  has_one_attached_file :image
 end

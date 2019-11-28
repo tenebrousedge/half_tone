@@ -3,50 +3,11 @@
 # main user class
 class Author
   # include ::Authority::UserAbilities
-  include Mongoid::Document
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, and :trackable
-  devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable,
-    :omniauthable, :confirmable
-
-  ## Database authenticatable
-  field :email,              type: String, default: ''
-  field :encrypted_password, type: String, default: ''
-
-  ## Recoverable
-  field :reset_password_token,   type: String
-  field :reset_password_sent_at, type: Time
-
-  ## Rememberable
-  field :remember_created_at, type: Time
-
-  ## Trackable
-  # field :sign_in_count,      type: Integer, default: 0
-  # field :current_sign_in_at, type: Time
-  # field :last_sign_in_at,    type: Time
-  # field :current_sign_in_ip, type: String
-  # field :last_sign_in_ip,    type: String
-
-  ## Confirmable
-  field :confirmation_token,   type: String
-  field :confirmed_at,         type: Time
-  field :confirmation_sent_at, type: Time
-  field :unconfirmed_email,    type: String # Only if using reconfirmable
-
-  ## Lockable
-  # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
-  # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
-  # field :locked_at,       type: Time
-  field :username, type: String
-  field :email, type: String
-  field :password, type: String
-
-  # self.authorizer_name = 'AuthorAuthorizer'
-  # Aliases for https://github.com/plataformatec/devise/issues/4542
-  alias will_save_change_to_email? email_changed?
-  alias email_in_database email_was
-  # alias email_before_last_save email_before_destroy_was
+  # devise :database_authenticatable, :registerable,
+  #   :recoverable, :rememberable, :validatable,
+  #   :omniauthable, :confirmable
 
   embeds_many :comic
   accepts_nested_attributes_for :comic, allow_destroy: true
