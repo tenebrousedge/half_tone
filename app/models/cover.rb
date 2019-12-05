@@ -1,4 +1,4 @@
 class Cover
-  embedded_in :covered, polymorphic: true
+  belongs_to :covereable, polymorphic: true
   has_one_attached :image
 end

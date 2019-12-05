@@ -2,5 +2,5 @@
 
 class CustomStyle
   field :text, type: String
-  embedded_in :styled, polymorphic: true
+  belongs_to :styleable, polymorphic: true
 end

@@ -13,9 +13,9 @@ class CreateAuthors < ActiveRecord::Migration[6.0]
       t.datetime :confirmation_sent_at
       t.timestamps
 
-      add_index :users, :email,                unique: true
-      add_index :users, :reset_password_token, unique: true
-      add_index :users, :confirmation_token,   unique: true
+      add_index :authors, :email,                unique: true
+      add_index :authors, :reset_password_token, unique: true
+      add_index :authors, :confirmation_token,   unique: true
     end
   end
 end

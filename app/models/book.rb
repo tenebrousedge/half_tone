@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
+# class for collections of pages
 class Book
-  field :title, type: String
-  field :subtitle, type: String
-  field :sort, type: Integer
-  field :chapter, type: HasMany
-  embedded_in :comic
+  include Styleable
+  include Coverable
+  include Pageable
+  belongs_to :comic
 end
