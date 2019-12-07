@@ -15,6 +15,7 @@ gem 'autoprefixer-rails'
 gem 'aws-sdk', '~> 3'
 gem 'bootsnap', require: false
 gem 'carrierwave'
+gem 'codemirror-rails'
 gem 'coffee-rails'
 gem 'comfortable_mexican_sofa', '~> 2.0.0'
 gem 'devise'

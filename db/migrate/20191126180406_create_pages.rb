@@ -5,8 +5,7 @@ class CreatePages < ActiveRecord::Migration[6.0]
       t.integer :sort_order
       t.references :pageable, polymorphic: true, null: false
       t.timestamps
-      add_index :pages, %i[pageable_type pageable_id], unique: true
-      add_index :pages, %i[pageable_type pageable_id sort_order], unique: true
     end
+    add_index :pages, %i[pageable_type pageable_id sort_order], unique: true
   end
 end

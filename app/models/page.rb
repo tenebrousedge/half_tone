@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 # Page class
-class Page
+class Page < ApplicationRecord
+  include Styleable
   publishable
-  belongs_to :pageable, polymorphic: true
-  has_one_attached_file :image
+  belongs_to :pageable, polymorphic: true, inverse_of: :page
+  has_one_attached :image
 end

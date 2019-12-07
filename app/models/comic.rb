@@ -1,4 +1,4 @@
-class Comic
+class Comic < ApplicationRecord
   include Ownable
   include Coverable
   include Backgroundable
