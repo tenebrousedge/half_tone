@@ -81,6 +81,6 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  # config.excluded_models = %w[Author]
-  config.included_models = %w[Author Comic Page Book Background CustomStyle]
+  config.excluded_models = %w[Author]
+  config.included_models = %w[Comic Page Book Background CustomStyle]
 end
