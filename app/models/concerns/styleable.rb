@@ -5,7 +5,7 @@ module Styleable
   extend ActiveSupport::Concern
 
   included do
-    has_many :custom_styles, as: :styleable, inverse_of: :styleable
+    has_many :custom_styles, as: :styleable, inverse_of: :styleable 
     accepts_nested_attributes_for :custom_styles, allow_destroy: true
   end
 end

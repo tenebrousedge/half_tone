@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_031808) do
+ActiveRecord::Schema.define(version: 2019_12_12_224828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_031808) do
     t.bigint "backgroundable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_backgrounds_on_author_id"
     t.index ["backgroundable_type", "backgroundable_id"], name: "index_backgrounds_on_backgroundable_type_and_backgroundable_id"
   end
 
@@ -70,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_031808) do
     t.bigint "comic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["comic_id", "sort_order"], name: "index_books_on_comic_id_and_sort_order", unique: true
     t.index ["comic_id"], name: "index_books_on_comic_id"
   end
@@ -92,6 +96,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_031808) do
     t.bigint "coverable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_covers_on_author_id"
     t.index ["coverable_type", "coverable_id"], name: "index_covers_on_coverable_type_and_coverable_id"
   end
 
@@ -101,6 +107,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_031808) do
     t.bigint "styleable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_custom_styles_on_author_id"
     t.index ["styleable_type", "styleable_id"], name: "index_custom_styles_on_styleable_type_and_styleable_id"
   end
 
@@ -111,6 +119,8 @@ ActiveRecord::Schema.define(version: 2019_12_07_031808) do
     t.bigint "pageable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_pages_on_author_id"
     t.index ["pageable_type", "pageable_id", "sort_order"], name: "index_pages_on_pageable_type_and_pageable_id_and_sort_order", unique: true
     t.index ["pageable_type", "pageable_id"], name: "index_pages_on_pageable_type_and_pageable_id"
   end

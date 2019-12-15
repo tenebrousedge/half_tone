@@ -2,6 +2,7 @@
 
 # class for collections of pages
 class Book < ApplicationRecord
+  include Ownable
   include Styleable
   include Coverable
   include Pageable

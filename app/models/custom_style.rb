@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class CustomStyle < ApplicationRecord
+  include PolymorphicJoin
+  include Ownable
   belongs_to :styleable, polymorphic: true, inverse_of: :custom_styles
-  validates_presence_of :text
+  validates :text, presence: true, css: true
   rails_admin do
     edit do
       field :text, :code_mirror do

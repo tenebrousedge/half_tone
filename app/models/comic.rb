@@ -1,4 +1,5 @@
 class Comic < ApplicationRecord
+  include Pageable
   include Ownable
   include Coverable
   include Backgroundable
