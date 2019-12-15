@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ComicPolicy < ApplicationPolicy
+  def destroy?
+    true
+  end
   class Scope < Scope
-    def resolve
-      scope.all
-    end
   end
 end

@@ -16,6 +16,10 @@ class ApplicationPolicy
     true
   end
 
+  def show_in_app?
+    show?
+  end
+
   def create?
     @user.present?
   end
@@ -53,7 +57,7 @@ class ApplicationPolicy
     end
 
     def resolve
-      scope.all
+      scope.where(author_id: @user.id)
     end
   end
 end
