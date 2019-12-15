@@ -15,6 +15,7 @@
 /public/assets
 /public/packs
 /public/system
+/storage
 /tags
 /tmp/*
 /yarn-error.log
