@@ -48,8 +48,11 @@ services:
     stdin_open: true
     volumes:
       - '.:/app'
+      - 'bundle_path:/bundle'
     env_file:
       - '.env'
+    environment:
+      - BUNDLE_PATH=/bundle/vendor
 
   sidekiq:
     depends_on:
@@ -90,3 +93,4 @@ volumes:
   mongo:
   redis:
   postgres:
+  bundle_path:
