@@ -5,3 +5,10 @@ log/*
 tmp/*
 data/*
 mongo_entrypoint/*
+node_modules
+*Dockerfile*
+*docker-compose*
+public/assets/*
+storage/*
+public/packs/*
+public/packs-test/*
