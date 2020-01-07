@@ -3,6 +3,6 @@
 class Background < ApplicationRecord
   include PolymorphicJoin
   include Ownable
-  belongs_to :backgroundeable, polymorphic: true
+  belongs_to :backgroundable, polymorphic: true
   has_one_attached :image
 end

@@ -5,7 +5,7 @@ module Backgroundable
   extend ActiveSupport::Concern
 
   included do
-    has_one :background, as: :backgroundable, inverse_of: :backgroundable 
+    has_one :background, as: :backgroundable
     accepts_nested_attributes_for :background
   end
 end

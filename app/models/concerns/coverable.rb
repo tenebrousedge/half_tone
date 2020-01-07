@@ -5,7 +5,7 @@ module Coverable
   extend ActiveSupport::Concern
 
   included do
-    has_one :cover, as: :coverable, inverse_of: :coverable
+    has_one :cover, as: :coverable
     accepts_nested_attributes_for :cover
   end
 end

@@ -74,7 +74,7 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
+    # show_in_app
 
     ## With an audit adapter, you can add:
     # history_index
@@ -82,5 +82,15 @@ RailsAdmin.config do |config|
   end
 
   config.excluded_models = %w[Author]
-  config.included_models = %w[Comic Page Book Background CustomStyle]
+  config.included_models = %w[Comic Page Book Background CustomStyle Cover]
+  # config.model 'Comic' do
+    # list do
+      # exclude_fields :settings
+      # configure :vertical_infinite_scroll, :boolean
+    # end
+    # edit do
+      # exclude_fields :settings
+      # configure :vertical_infinite_scroll, :boolean
+    # end
+  # end
 end

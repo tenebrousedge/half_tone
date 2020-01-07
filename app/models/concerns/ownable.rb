@@ -5,7 +5,7 @@ module Ownable
 
   included do
     has_one :author
-    validates_associated :owner
+    validates_associated :author
     # s = self.class
     # Author.class_eval do
     #   has_many s.to_s.downcase.pluralize.to_sym

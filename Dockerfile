@@ -4,7 +4,6 @@ ARG GROUP_ID=1000
 FROM ruby:2.6-alpine as Base
 ARG USER_ID
 ARG GROUP_ID
-ENV BUNDLE_PATH=/bundle
 ARG BUNDLE_WITHOUT=""
 ARG RAILS_ENV="development"
 
@@ -26,8 +25,7 @@ RUN apk add --no-cache \
 
 
 RUN mkdir /app
-RUN mkdir ${BUNDLE_PATH}
-RUN chown ${USER_ID}:${GROUP_ID} /app ${BUNDLE_PATH}
+RUN chown ${USER_ID}:${GROUP_ID} /app
 USER half_tone
 WORKDIR /app
 
@@ -36,13 +34,14 @@ COPY --chown=${USER_ID}:${GROUP_ID} Gemfile Gemfile.lock ./
 # see https://github.com/protocolbuffers/protobuf/issues/4460
 RUN CFLAGS="-Wno-cast-function-type" \
   BUNDLE_FORCE_RUBY_PLATFORM=1 \
-  bundle install --binstubs "$BUNDLE_BIN" -j4 --retry 3
+  bundle install --binstubs -j4 --retry 3 \
+  && rm -rf "${BUNDLE_PATH}/cache" \
+  "${BUNDLE_PATH}/bundler/gems/*/.git" \
+  && find "${BUNDLE_PATH}/gems" -regex '.+\.[co]$' -delete
 
 COPY --chown=${USER_ID}:${GROUP_ID} . .
 RUN yarn --pure-lockfile \
-  && bundle exec rake assets:precompile \
-  && rm -rf /bundle/cache/*.gem \
-  && find /bundle/gems/ -regex '.+\.[co]$' -delete
+  && bundle exec rake assets:precompile
 
 FROM Base
 ARG USER_ID
@@ -52,12 +51,15 @@ RUN apk add --update --no-cache \
   openssl \
   tzdata \
   postgresql-dev \
-  postgresql-client
+  postgresql-client \
+  file \
+  imagemagick \
+  nodejs-current # omit this in production
 
-COPY --from=Builder /bundle /bundle
+COPY --from=Builder ${BUNDLE_PATH} ${BUNDLE_PATH}
 COPY --from=Builder --chown=${USER_ID}:${GROUP_ID} /app /app
 
 ENV RAILS_LOG_TO_SDTOUT true
 WORKDIR /app
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "bin/rails", "server", "-b", "0.0.0.0"]
