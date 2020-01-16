@@ -3,6 +3,9 @@
 class ComicsController < ApplicationController
   before_action :set_comic, only: %i[show edit update destroy]
 
+  # load browser js
+  def browse; end
+
   # GET /comics
   def index
     @comics = Comic.all

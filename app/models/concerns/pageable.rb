@@ -5,7 +5,7 @@ module Pageable
   extend ActiveSupport::Concern
 
   included do
-    has_many :pages, as: :pageable, inverse_of: :pageable 
+    has_many :pages, as: :pageable
     accepts_nested_attributes_for :pages, allow_destroy: true
   end
 end

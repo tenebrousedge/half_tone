@@ -22,7 +22,15 @@ Rails.application.routes.draw do
     resources :pages
     resources :comics
   end
-    resources :authors
+  # resources :authors # this surely doesn't need to be here?
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :comics, only: %i[index show]
+      resources :pages, only: %i[index show]
+      resources :authors, only: %i[index show]
+    end
+  end
 
   root to: 'comics#browse'
 end
